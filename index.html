@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلام</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #667eea;
+            margin-bottom: 20px;
+            animation: wave 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-10deg);
+            }
+            75% {
+                transform: rotate(10deg);
+            }
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .greeting {
+            font-size: 2.5rem;
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .time {
+            font-size: 1.2rem;
+            color: #888;
+            margin-top: 20px;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin: 20px 0;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #667eea;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .message.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👋</h1>
+        <div class="greeting">سلام!</div>
+        <p>خوش آمدید</p>
+        <div class="emoji">🌟</div>
+        <p>امیدوارم روز خوبی داشته باشید</p>
+        <div class="time" id="time"></div>
+        <button onclick="showMessage()">کلیک کنید</button>
+        <div class="message" id="message">ممنون که اینجا هستید! 💜</div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('fa-IR');
+            const dateString = now.toLocaleDateString('fa-IR');
+            document.getElementById('time').textContent = `${dateString} - ${timeString}`;
+        }
+
+        function showMessage() {
+            const message = document.getElementById('message');
+            message.classList.toggle('show');
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
